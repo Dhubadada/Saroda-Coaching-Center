@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SARODA Coaching Center - Excellence in Education</title>
+    <meta name="description" content="Premier coaching center in Chittagong offering SSC, HSC, and Admission test preparation with expert faculty.">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #1cc88a;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fc;
+            --accent-color: #f6c23e;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            padding: 1rem 0;
+            transition: all 0.3s;
+        }
+        
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.3);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            color: var(--dark-color) !important;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.8rem;
+            font-weight: 500;
+            border-radius: 0.375rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5bcc;
+            border-color: #3a5bcc;
+            transform: translateY(-2px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #224abe 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+        }
+        
+        .hero-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-subtitle {
+            font-weight: 300;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--dark-color);
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .teacher-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .teacher-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e3e6f0;
+            border-radius: 0.35rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--dark-color) 0%, #1a252f 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            position: relative;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card:before {
+            content: '\201C';
+            font-size: 5rem;
+            color: rgba(78, 115, 223, 0.1);
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .course-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>SARODA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teachers">Teachers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Success</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary ms-lg-3">Enroll Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container text-center position-relative">
+            <h1 class="hero-title animate__animated animate__fadeInDown">Unlock Your Academic Potential</h1>
+            <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">SARODA Coaching Center provides premium education with personalized attention to help students excel in SSC, HSC, and university admission tests.</p>
+            <div class="animate__animated animate__fadeInUp animate__delay-1s">
+                <a href="#courses" class="btn btn-light btn-lg me-2">Our Courses</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4 text-center animate__animated animate__fadeIn">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4>Expert Teachers</h4>
+                    <p>Our faculty consists of experienced educators with proven track records in their respective fields.</p>
+                </div>
+                <div class="col-md-4 text-center animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h4>Comprehensive Materials</h4>
+                    <p>Carefully curated study materials and practice tests designed for maximum effectiveness.</p>
+                </div>
+                <div class="col-md-4 text-center animate__animated animate__fadeIn animate__delay-2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h4>Personalized Attention</h4>
+                    <p>Small class sizes ensure each student receives the individual attention they need to succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Our Courses</h2>
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="course-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h5 class="card-title">SSC Coaching</h5>
+                            <p class="card-text">Comprehensive preparation for SSC exams with focus on Mathematics, Physics, Chemistry, Biology, and English. Our proven methods help students master core concepts.</p>
+                            <ul class="text-start ps-3">
+                                <li>Daily problem solving sessions</li>
+                                <li>Weekly mock tests</li>
+                                <li>Special grammar classes</li>
+                                <li>Creative writing practice</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="course-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h5 class="card-title">HSC Coaching</h5>
+                            <p class="card-text">Advanced coaching for HSC students with in-depth subject knowledge, practical applications, and exam strategies to achieve top results.</p>
+                            <ul class="text-start ps-3">
+                                <li>Conceptual clarity sessions</li>
+                                <li>Practical lab demonstrations</li>
+                                <li>University preparation guidance</li>
+                                <li>Time management training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="course-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h5 class="card-title">Admission Coaching</h5>
+                            <p class="card-text">Specialized training for medical, engineering, and university admission tests with customized study plans and intensive practice sessions.</p>
+                            <ul class="text-start ps-3">
+                                <li>Model test series</li>
+                                <li>Previous year question analysis</li>
+                                <li>Interview preparation</li>
+                                <li>Special math & physics modules</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4 animate__animated animate__fadeIn">
+                    <div class="stat-number">13+</div>
+                    <p>Years Experience</p>
+                </div>
+                <div class="col-md-3 mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="stat-number">1500+</div>
+                    <p>Students Taught</p>
+                </div>
+                <div class="col-md-3 mb-4 animate__animated animate__fadeIn animate__delay-2s">
+                    <div class="stat-number">95%</div>
+                    <p>Success Rate</p>
+                </div>
+                <div class="col-md-3 mb-4 animate__animated animate__fadeIn animate__delay-3s">
+                    <div class="stat-number">50+</div>
+                    <p>University Admissions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 animate__animated animate__fadeIn">
+                    <h2 class="section-title text-start">About SARODA</h2>
+                    <p>Founded in 2010, SARODA Coaching Center has established itself as a premier educational institution in Chittagong, dedicated to academic excellence and student success.</p>
+                    <p>Our mission is to provide quality education that goes beyond textbook learning, fostering critical thinking, problem-solving skills, and a lifelong love for learning.</p>
+                    <p>What sets us apart is our student-centered approach, where we tailor our teaching methods to individual learning styles, ensuring every student reaches their full potential.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <i class="fas fa-check-circle text-success me-2"></i> Qualified Teachers
+                        </div>
+                        <div>
+                            <i class="fas fa-check-circle text-success me-2"></i> Modern Facilities
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeIn animate__delay-1s">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Classroom" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Meet Our Faculty</h2>
+            <p class="text-center mb-5">Our team of dedicated educators brings years of experience and a passion for teaching to every class.</p>
+            <div class="row g-4">
+                <div class="col-md-4 text-center animate__animated animate__fadeInUp">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Teacher 1" class="rounded-circle teacher-img">
+                    <h5>Md. Rahim Uddin</h5>
+                    <p class="text-primary fw-bold">Math & Physics Expert</p>
+                    <p>M.Sc in Physics, University of Chittagong with 12 years teaching experience.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="text-muted me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center animate__animated animate__fadeInUp animate__delay-1s">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Teacher 2" class="rounded-circle teacher-img">
+                    <h5>Faria Akter</h5>
+                    <p class="text-primary fw-bold">Chemistry & Biology Instructor</p>
+                    <p>Ph.D in Chemistry, Bangladesh University of Engineering and Technology.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="text-muted me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center animate__animated animate__fadeInUp animate__delay-2s">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Teacher 3" class="rounded-circle teacher-img">
+                    <h5>Nasim Hossain</h5>
+                    <p class="text-primary fw-bold">English & General Knowledge</p>
+                    <p>MA in English Literature, University of Dhaka with specialization in test preparation.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="text-muted me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Student Success Stories</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4 animate__animated animate__fadeIn">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Student" class="testimonial-img">
+                        <div class="text-center mt-4">
+                            <h5>Ayesha Siddiqua</h5>
+                            <p class="text-muted">Medical College Admission, GPA 5.00</p>
+                        </div>
+                        <p class="mt-3">"SARODA's intensive coaching helped me secure admission to Chittagong Medical College. The teachers' dedication and personalized attention made all the difference in my preparation."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="Student" class="testimonial-img">
+                        <div class="text-center mt-4">
+                            <h5>Arif Rahman</h5>
+                            <p class="text-muted">BUET Admission, GPA 5.00</p>
+                        </div>
+                        <p class="mt-3">"The problem-solving techniques I learned at SARODA were instrumental in my BUET admission. The mock tests and detailed feedback helped me identify and improve my weak areas."</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-5 mb-4 animate__animated animate__fadeIn">
+                    <h4>Contact Information</h4>
+                    <div class="d-flex align-items-start my-4">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <div>
+                            <h6>Address</h6>
+                            <p>123 Academic Road, Nasirabad, Chittagong</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start my-4">
+                        <i class="fas fa-phone-alt text-primary me-3 mt-1"></i>
+                        <div>
+                            <h6>Phone</h6>
+                            <p>+880 1234 567890</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start my-4">
+                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                        <div>
+                            <h6>Email</h6>
+                            <p>info@sarodacoaching.com</p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h6>Opening Hours</h6>
+                        <p>Saturday - Thursday: 8:00 AM - 8:00 PM</p>
+                        <p>Friday: 4:00 PM - 8:00 PM</p>
+                    </div>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 animate__animated animate__fadeIn animate__delay-1s">
+                    <div class="contact-form">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Your Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.041049654183!2d91.8253143149548!3d22.35684298530065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd89aaa8239cd%3A0x6e65fa000eaf8651!2sNasirabad%2C%20Chittagong!5e0!3m2!1sen!2sbd!4v1620000000000!5m2!1sen!2sbd" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4><i class="fas fa-graduation-cap me-2"></i>SARODA</h4>
+                    <p>Premier coaching center in Chittagong dedicated to academic excellence and student success since 2010.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#courses">Courses</a></li>
+                        <li class="mb-2"><a href="#about">About Us</a></li>
+                        <li class="mb-2"><a href="#teachers">Faculty</a></li>
+                        <li class="mb-2"><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Courses</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">SSC Preparation</a></li>
+                        <li class="mb-2"><a href="#">HSC Science</a></li>
+                        <li class="mb-2"><a href="#">HSC Commerce</a></li>
+                        <li class="mb-2"><a href="#">Medical Admission</a></li>
+                        <li class="mb-2"><a href="#">University Admission</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe to our newsletter for updates on new courses and educational tips.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 SARODA Coaching Center. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> by SARODA Team</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; text-align: center; line-height: 50px;">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    const animationClass = element.classList[1];
+                    element.classList.add(animationClass);
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
